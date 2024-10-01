@@ -1,5 +1,6 @@
 package edu.temple.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+const val SIZE_KEY = "somekeyvalue"
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
             // TODO Step 2: Implement lambda body to launch new activity and pass value
             adapter = TextSizeAdapter(textSizes){
-
+                startActivity(Intent(this@MainActivity, DisplayActivity::class.java).putExtra(SIZE_KEY, it))
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
